@@ -110,6 +110,46 @@ header {
   color: #6b7280;
 }
 
+/* mobile nav toggle (hidden by default) */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-left: auto;
+}
+
+.nav-toggle-label span {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #4b5563;
+  border-radius: 999px;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: #4b5563;
+  border-radius: 999px;
+}
+
+.nav-toggle-label span::before {
+  top: -6px;
+}
+
+.nav-toggle-label span::after {
+  top: 6px;
+}
+
 .nav-links {
   display: flex;
   gap: 1.4rem;
@@ -172,10 +212,10 @@ header {
 }
 
 .hero-text h1 {
-  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-size: clamp(2.4rem, 4vw, 3.1rem);
   color: var(--brown);
-  margin: 0 0 1rem;
-  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
 }
 
 .hero-subtext {
@@ -214,7 +254,7 @@ header {
   display: block;
 }
 
-/* Frame around hero image to feel more “designed” */
+/* Frame around hero image */
 .hero-image-framed {
   position: relative;
 }
@@ -242,8 +282,8 @@ header {
 }
 
 .section h2 {
-  font-size: 1.6rem;
-  margin: 0 0 0.75rem;
+  font-size: 1.8rem;
+  margin: 0 0 0.6rem;
   color: var(--brown);
 }
 
@@ -312,18 +352,17 @@ header {
   border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-/* ---------- REVIEWS ---------- */
+/* ---------- PREMIUM REVIEW CARDS ---------- */
 .reviews-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-/* ---------- PREMIUM REVIEW CARDS ---------- */
 .review-card {
   position: relative;
   background: white;
-  padding: 1.4rem 1.25rem 1.25rem;
+  padding: 1.8rem 1.25rem 1.25rem;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
@@ -345,7 +384,7 @@ header {
   border-radius: 16px 0 0 16px;
 }
 
-/* Slight texture effect */
+/* Subtle texture */
 .review-card::after {
   content: "";
   position: absolute;
@@ -358,7 +397,6 @@ header {
   );
 }
 
-/* Improve text readability */
 .review-card p {
   margin: 0;
 }
@@ -488,11 +526,6 @@ h1 {
   letter-spacing: -0.5px;
 }
 
-h2 {
-  margin: 0 0 0.6rem;
-  font-size: 1.8rem;
-}
-
 h3 {
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
@@ -526,9 +559,19 @@ p {
   }
 
   .nav {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-toggle-label {
+    display: inline-flex;
+  }
+
+  .nav-links,
+  .nav-cta {
+    width: 100%;
+    display: none;
   }
 
   .nav-links {
@@ -538,12 +581,16 @@ p {
   }
 
   .nav-cta {
-    align-self: stretch;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-} /* end of @media (max-width: 900px) */
+
+  .nav-toggle:checked ~ .nav-links,
+  .nav-toggle:checked ~ .nav-cta {
+    display: flex;
+  }
+}
 
 @media (max-width: 600px) {
   .hero {
@@ -585,4 +632,4 @@ p {
   .footer {
     padding: 1.6rem 0 1.4rem;
   }
-} /* end of @media (max-width: 600px) */
+}
